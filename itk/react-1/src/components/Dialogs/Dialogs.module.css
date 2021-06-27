@@ -1,0 +1,30 @@
+.dialogs{
+display: grid;
+grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems{
+padding: 10px;
+color:  white;
+}
+
+.dialogs .dialogsItems .dialog .userAvatar{
+    height: 25px;
+    width: 45px;
+}
+
+.dialogsItems .active{
+    color : gold;
+    }
+
+.dialog{
+    text-decoration: none;
+}
+
+.messages{
+    padding: 10px;
+}
+
+.messages .message{
+color: white;
+}

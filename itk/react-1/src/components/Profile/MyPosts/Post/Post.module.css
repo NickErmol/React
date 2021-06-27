@@ -1,0 +1,14 @@
+
+.avatarImage {
+  height: 80px;
+  width: 75px;
+}
+
+.item {
+  color:cornflowerblue;
+}
+
+.item img{
+  width: 35px;
+  border-radius: 35px;
+}

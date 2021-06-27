@@ -1,7 +1,8 @@
 .app-wrapper {
     display: grid;
     padding: 10px;
-    width: 1200px;
+    width: 1400px;
+    margin: auto;
 
     grid-template-areas:
         "h h"
@@ -11,37 +12,7 @@
     grid-gap: 10px;
 }
 
-.header {
-    grid-area: h;
-    background-color: aqua;
-}
-
-.header img {
-    width: 70px;
-    height: 50px;
-}
-
-.nav {
-    grid-area: n;
-    background-color: blueviolet;
-}
-
-.content {
+.app-wrapper-content {
     grid-area: c;
     background-color: chartreuse;
-
-}
-
-.avatarImage {
-    height: 80px;
-    width: 75px;
-}
-
-ul li {
-    list-style-type: none;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
 }
