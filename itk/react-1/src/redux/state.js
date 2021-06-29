@@ -1,8 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+import sideBarReducer from "./sideBarReducer";
 
 const store = {
   _state: {
@@ -69,6 +67,7 @@ const store = {
       ],
       newMessageBody: ""
     },
+    sideBar:{}
   },
   _callSubscriber() {},
 
@@ -81,47 +80,13 @@ const store = {
 
 
   dispatch(action) {
-      if (action.type === ADD_POST){
-        const newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 5,
-          };
-          this._state.profilePage.posts.push(newPost);
-          this._state.profilePage.newPostText = "";
-          this._callSubscriber(this._state);
-      } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        this._state.profilePage.newPostText = action.newText;
-        this._callSubscriber(this._state);
-      } else if (action.type === UPDATE_NEW_MESSAGE_BODY){
-        this._state.dialogsPage.newMessageBody = action.newMessageBody;
-        this._callSubscriber(this._state);
-      } else if (action.type === SEND_MESSAGE){
-        const newMessage = {
-            id: 8,
-            message: this._state.dialogsPage.newMessageBody
-          };
-        this._state.dialogsPage.messages.push(newMessage);
-        this._state.dialogsPage.newMessageBody = "";
-        this._callSubscriber(this._state);
-      }
-  },
-};
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.sideBar = sideBarReducer(this._state.sideBar, action);
 
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-  
-export const updateNewPostTextActionCreator = (text) => ({
-      type: UPDATE_NEW_POST_TEXT,
-      newText: text
-  });
-
-export const sendMessageCreator = () => ({type: SEND_MESSAGE});
-  
-export const updateNewMessageBodyCreator = (message) => ({
-      type: UPDATE_NEW_MESSAGE_BODY,
-      newMessageBody: message
-  });
+    this._callSubscriber(this._state);
+ }
+}
 
 window.store = store;
 
