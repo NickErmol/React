@@ -7,9 +7,9 @@ const Dialogs = (props) => {
 
     const state = props.dialogsPage;
     const newMessageBody = props.newMessageBody;
-
-    const dialogElements = state.dialogs.map(d => (<DialogItem id = {d.id} name = {d.name} userAvatar = {d.userAvatar}/>));
-    const messagesElements = state.messages.map(m => (<Message message = {m.message}/>));
+    
+    const dialogElements = state.dialogs.map(d => (<DialogItem id = {d.id} key = {d.id} name = {d.name} userAvatar = {d.userAvatar}/>));
+    const messagesElements = state.messages.map(m => (<Message message = {m.message} key ={m.id}/>));
 
     const onSendMessage = () => {
         props.sendMessage();
