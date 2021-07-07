@@ -4,7 +4,7 @@ import "./App.css";
 import "./components/Header/Header";
 import Header from "./components/Header/Header";
 import Navbar from "./components/Nav/Nav";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import { Route } from "react-router";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
@@ -21,7 +21,7 @@ const App = (props) => {
         {/* <Route path ='/dialogs' component={Dialogs} /> */}
 
         <Route path ='/dialogs' render={()=><DialogsContainer/>} />
-        <Route path ='/profile' render={()=><Profile/>} />
+        <Route path ='/profile' render={()=><ProfileContainer/>} />
         <Route path ='/users' render={()=><UsersContainer/>} />
         <Route path ='/news' render={()=><News/>} />
         <Route path ='/music' render={()=><Music/>} />
