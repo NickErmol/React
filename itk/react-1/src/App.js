@@ -4,7 +4,6 @@ import "./App.css";
 import "./components/Header/Header";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Nav/Nav";
-import WithUrlDataContainerComponent from "./components/Profile/ProfileContainer";
 import { Route } from "react-router";
 import Settings from "./components/Settings/Settings";
 import News from "./components/News/News";
@@ -12,6 +11,7 @@ import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Login from "./components/Login/Login";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
   return ( 
@@ -22,7 +22,7 @@ const App = (props) => {
         {/* <Route path ='/dialogs' component={Dialogs} /> */}
 
         <Route path ='/dialogs' render={()=><DialogsContainer/>} />
-        <Route path ='/profile/:userId?' render={()=><WithUrlDataContainerComponent/>} />
+        <Route path ='/profile/:userId?' render={()=><ProfileContainer/>} />
         <Route path ='/users' render={()=><UsersContainer/>} />
         <Route path ='/news' render={()=><News/>} />
         <Route path ='/music' render={()=><Music/>} />

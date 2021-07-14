@@ -15,9 +15,9 @@ const ProfileInfo = (props) => {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <img src='https://img.freepik.com/free-vector/ocean-sea-beach-nature-tranquil-landscape_33099-2248.jpg?size=626&ext=jpg&ga=GA1.2.1356500412.1617235200' />
-      </div>
+      </div> */}
       <div className = {s.descriptionBlock}>
         <img src = {props.profile.photos.large} />
         <div> About me : {props.profile.aboutMe}</div>
