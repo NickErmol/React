@@ -52,4 +52,16 @@ export const getAuthUserData = () => {
     }
   }
 
+  export const login = () => {
+    return (dispatch) => {
+        authAPI.login()
+        .then(response => {
+          let {email , password , rememberMe } = response.data.data;
+          if (response.resultCode === 0) {
+            dispatch(setAuthUserData(email, password , rememberMe ));
+          } 
+        })
+    }
+  }
+
 export default authReducer;

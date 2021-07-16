@@ -1,4 +1,3 @@
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 const initialState =  {
@@ -55,7 +54,6 @@ const initialState =  {
           'https://w7.pngwing.com/pngs/238/446/png-transparent-computer-icons-user-profile-avatar-old-man-face-heroes-head.png',
       },
     ],
-    newMessageBody: ''
   }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -63,29 +61,17 @@ const dialogsReducer = (state = initialState, action) => {
         case SEND_MESSAGE:
             const newMessage = {
                 id: 8,
-                message: state.newMessageBody
+                message: action.newMessageBody
                 };
                 return {...state,
-                    messages: [...state.messages, newMessage],
-                    newMessageBody: ''
+                    messages: [...state.messages, newMessage]
                 };
-          
-        case UPDATE_NEW_MESSAGE_BODY:
-            return {
-                ...state,
-                newMessageBody:action.newMessageBody
-            };
         
         default:
             return state;
     }
 }
 
-export const sendMessage = () => ({type: SEND_MESSAGE});
-  
-export const updateNewMessageBody = (message) => ({
-      type: UPDATE_NEW_MESSAGE_BODY,
-      newMessageBody: message
-  });
+export const sendMessage = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
 
 export default dialogsReducer;
