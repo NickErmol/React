@@ -1,10 +1,9 @@
-import React from "react";
-import * as axios from 'axios';
-import Header from "./Header";
-import { connect } from "react-redux";
+import React from 'react';
+import Header from './Header';
+import { connect } from 'react-redux';
 import {getAuthUserData, setAuthUserPhoto} from '../../redux/auth-reducer';
-import { usersAPI, authAPI } from '../../API/api';
-import { compose } from "redux";
+import { compose } from 'redux';
+import { logout } from '../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component{
 
@@ -25,5 +24,5 @@ let mapStateToProps = (state) =>({
 })
 
 export default compose(
-  connect(mapStateToProps, {getAuthUserData, setAuthUserPhoto})
+  connect(mapStateToProps, {getAuthUserData, setAuthUserPhoto, logout})
 )(HeaderContainer);
