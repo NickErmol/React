@@ -6,6 +6,7 @@ import { maxLength, required } from '../../utils/validators/validators';
 import { connect } from 'react-redux';
 import {login, logout} from '../../redux/auth-reducer';
 import { Redirect } from 'react-router';
+import style from '../Common/FormsControls/FormsControls.module.css'
 
 const maxLength40 = maxLength(40);
 
@@ -39,6 +40,9 @@ const LoginForm = (props) => {
         <div>
             <Field type = {'checkbox'}  name = {'rememberMe'} component = {Input} /> remember me
         </div>
+        {props.error && <div className = {style.formSummaryError}>
+            {props.error}
+        </div>}
         <div>
             <button>Login</button>
         </div>

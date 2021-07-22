@@ -10,3 +10,10 @@
 {
     color: red;
 }
+
+.formSummaryError{
+    border: solid red 2px;
+    padding: 5px;
+    color:tomato;
+    width:  200px;
+}
