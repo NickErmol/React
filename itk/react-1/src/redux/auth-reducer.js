@@ -36,7 +36,7 @@ export const setAuthUserPhoto = (photo) => ({type: SET_USER_DATA, photo});
 
 export const getAuthUserData = () => {
     return (dispatch) => {
-        authAPI.getMyData()
+        return  authAPI.getMyData()
         .then(data => {
           let {id, login, email} = data.data;
           if (data.resultCode === 0) {
