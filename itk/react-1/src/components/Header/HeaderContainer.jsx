@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {getAuthUserData, setAuthUserPhoto} from '../../redux/auth-reducer';
 import { compose } from 'redux';
 import { logout } from '../../redux/auth-reducer';
+import { getIsAuth, getLogin } from '../../redux/authSelectors';
 
 class HeaderContainer extends React.Component{
 
@@ -15,8 +16,8 @@ class HeaderContainer extends React.Component{
 };
 
 let mapStateToProps = (state) =>({
-  isAuth: state.auth.isAuth,
-  login: state.auth.login
+  isAuth: getIsAuth(state),
+  login: getLogin(state)
 })
 
 export default compose(

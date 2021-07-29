@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import {sendMessage} from "../../redux/dialogsReducer"
+import { getDialogsPage, getDialogsPageNewMessageBody } from "../../redux/dialogsSelectors";
 import Dialogs from "./Dialogs";
 
 let mapStateToProps = (state) => {
   return {
-    dialogsPage : state.dialogsPage,
-    newMessageBody : state.dialogsPage.newMessageBody
+    dialogsPage : getDialogsPage(state),
+    newMessageBody : getDialogsPageNewMessageBody(state)
   };
 };
 
