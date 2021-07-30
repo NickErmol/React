@@ -9,7 +9,7 @@ const maxLength10 = maxLength(10);
 
 const MyPosts = (props) => {
 
-  const postsElements = props.posts.map(p => (<Post message= {p.message} likesCount = {p.likesCount}/>));
+  const postsElements = props.posts.map(p => (<Post message= {p.message} likesCount = {p.likesCount} key = {p.id}/>));
 
   const onSubmit=(values)=>{
     props.addPost(values.newPostText);
