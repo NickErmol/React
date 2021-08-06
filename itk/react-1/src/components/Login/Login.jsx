@@ -1,12 +1,13 @@
 import React from 'react';
 import s from './Login.module.css';
-import {Field, reduxForm} from 'redux-form'
-import { Input } from '../Common/FormsControls/FormsControls';
+import {reduxForm} from 'redux-form'
+import { CreateField, Input } from '../Common/FormsControls/FormsControls';
 import { maxLength, required } from '../../utils/validators/validators';
 import { connect } from 'react-redux';
-import {login, logout} from '../../redux/auth-reducer';
+import {login} from '../../redux/auth-reducer';
 import { Redirect } from 'react-router';
 import style from '../Common/FormsControls/FormsControls.module.css'
+import { getIsAuth } from '../../redux/authSelectors';
 
 const maxLength40 = maxLength(40);
 
@@ -18,7 +19,6 @@ const Login = (props) => {
     if(props.isAuth){
         return <Redirect to = {'/profile'}/>;
     }
-    
 
     return(
         <div>
@@ -28,20 +28,15 @@ const Login = (props) => {
     )
 }
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     return(
-    <form onSubmit = {props.handleSubmit}>
-        <div>
-            <Field placeholder = {'Email'} name = {'email'} component = {Input} validate = {[required, maxLength40]}/>
-        </div>
-        <div>
-            <Field placeholder = {'Password'}  name = {'password'} type = 'password' component = {Input} validate = {[required, maxLength40]}/>
-        </div>
-        <div>
-            <Field type = {'checkbox'}  name = {'rememberMe'} component = {Input} /> remember me
-        </div>
-        {props.error && <div className = {style.formSummaryError}>
-            {props.error}
+    <form onSubmit = {handleSubmit}>
+        {CreateField('Email', 'email', Input, [required, maxLength40])}
+        {CreateField('Password', 'password', Input, [required, maxLength40], {type: 'password'})}
+        {CreateField(null, 'rememberMe', Input, [], {type: 'checkbox'}, 'remember me')}
+
+        {error && <div className = {style.formSummaryError}>
+            {error}
         </div>}
         <div>
             <button>Login</button>
@@ -53,6 +48,7 @@ const LoginForm = (props) => {
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const mapStateToProps = (state) =>({
+    // isAuth: getIsAuth(state),
     isAuth: state.auth.isAuth,
 })
 

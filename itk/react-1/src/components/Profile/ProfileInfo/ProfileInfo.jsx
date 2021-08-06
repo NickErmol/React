@@ -3,31 +3,23 @@ import Preloader from '../../Common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile, status, updateStatus}) => {
 
-  // let contacts;
-
-  if(!props.profile){
+  if(!profile){
     return <Preloader/>
   } 
-  // else {
-  //   contacts = props.profile.contacts.map(c => (<span>{c}</span>));
-  // }
 
   return (
     <div>
-      {/* <div>
-        <img src='https://img.freepik.com/free-vector/ocean-sea-beach-nature-tranquil-landscape_33099-2248.jpg?size=626&ext=jpg&ga=GA1.2.1356500412.1617235200' />
-      </div> */}
       <div className = {s.descriptionBlock}>
-        <img src = {props.profile.photos.large} />
-        <div> About me : {props.profile.aboutMe}</div>
-        <div> Looking for a job : {props.profile.lookingForAJob ? 'true' : 'false'}</div>
-        <div> Looking for a job description : {props.profile.lookingForAJobDescription}</div>
-        <div> Full name : {props.profile.fullName}</div>
+        <img src = {profile.photos.large} />
+        <div> About me : {profile.aboutMe}</div>
+        <div> Looking for a job : {profile.lookingForAJob ? 'true' : 'false'}</div>
+        <div> Looking for a job description : {profile.lookingForAJobDescription}</div>
+        <div> Full name : {profile.fullName}</div>
         <div> Contacts :</div>
        
-        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
       </div>
     </div>
   );
