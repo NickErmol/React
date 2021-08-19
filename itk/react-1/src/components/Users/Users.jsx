@@ -6,7 +6,7 @@ const Users = ({currentPage, onPageChanged, totalUsersCount, pageSize, users, ..
 
     return (
         <div>
-            <Paginator currentPage = {currentPage} pageSize = {pageSize} totalUsersCount = {totalUsersCount} onPageChanged = {onPageChanged}/>
+            <Paginator currentPage = {currentPage} pageSize = {pageSize} totalItemsCount = {totalUsersCount} onPageChanged = {onPageChanged}/>
             <div>
             {
                 users.map((u) => <User user = {u}
